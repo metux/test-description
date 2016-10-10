@@ -1,0 +1,11 @@
+# Boottest environment variables
+#
+# @CONFIG:	Kernel built with configuration ...
+# @OVERLAY:	... with overlay, if defined
+# @TARGET:	target defined as node in jenkins
+# @CYCLITEST:	cyclictest list, if a cyclictest should be exectued after
+# 		successfull boot
+
+CONFIG=arm/phyflex-imx6
+OVERLAY=RT-full
+TARGET=phyflex-imx6

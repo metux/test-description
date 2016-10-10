@@ -1,0 +1,12 @@
+# Boottest environment variables
+#
+# @CONFIG:	Kernel built with configuration ...
+# @OVERLAY:	... with overlay, if defined
+# @TARGET:	target defined as node in jenkins
+# @CYCLITEST:	cyclictest list, if a cyclictest should be exectued after
+# 		successfull boot
+
+CONFIG=x86/x86_64def_e1000e
+OVERLAY=RT-full
+TARGET=iommu
+CYCLICTEST=cyclictest/iommu.list

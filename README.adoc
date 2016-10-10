@@ -1,0 +1,49 @@
+CI-RT Test-description
+======================
+
+The used git repository structure to define a CI-RT test run is
+explained in the following.
+
+Every branch defines an own test. The structure stays the same. The
+given example executes the following tests:
+
+- (cross) compile kernel with arm phyflex-imx6, x86 x86_64_defconfig
+  and x86 x86_64def_e1000e configuration in each case as it is and
+  with RT-full overlay
+
+- boottest on phyflex-imx6 (phyflex-imx6 config with RT-full overlay)
+  and on iommu (x86_64def_e1000e config with RT-full overlay).
+
+- cyclictest on iommu without load
+
+
+(directories are marked with +-).
+
+----
++-env			  (environment settings)
+	global.properties (definition of global environment settings)
+	compile.list	  (list of all compile tests, that should be executed)
+	overlay.list	  (list of overlays, that should be used for compile
+			   tests)
+	arm.properties	  ((cross) compile settings for architecture, if needed)
+	boottest.list	  (list of all boottests)
+	email.list	  (list of notification email addresses)
+
++-compile		  (configurations and overlays for compile test)
+	+-configs	  (user defined kernel configurations, in subdirectories
+			   sorted by architecture)
+		+-arm	  (all arm configurations)
+		+-x86	  (all x86 configurations)
+	+-overlays	  (folder with all defined overlays)
+
++-boot			  (boottest settings, each boottest has an own file)
+
++-cyclictest		  (cyclictest settings)
+	iommu.list	  (list with all cyclictests for a target such as iommu)
+	idle		  (environment setting for a specific cyclictest)
+----
+
+The structure of the files is explained more detailed in the files
+itself. The kernel configuration files and the overlay files abide by
+the rules of Linux kernel configuration files. No further explanation
+is given.

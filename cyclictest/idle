@@ -1,0 +1,19 @@
+# Environment for cyclictest
+#
+# The following environment variables must be set:
+# @DURATION:	duration of cyclictest run in seconds (unit cannot be changed)
+#  		(-D option of cyclictest)
+# @INTERVAL:	base interval of threads in microseconds
+# 		(-i option of cyclictest)
+# @LIMIT:	specifies threshold latency value and histogram max latency
+# 		(-b and -h option of cyclictest)
+#
+# This environment variable can stay empty
+# @LOADGEN:	command, that should be executed as load. If LOADGEN is not set,
+# 		cyclictest runs without load. In database "idle" is stored as
+#		load.
+# 
+
+DURATION=60
+INTERVAL=500
+LIMIT=1000

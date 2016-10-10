@@ -1,0 +1,6 @@
+# E-Mail Notification List
+#
+# All listed users get an email notification after a completed test
+# run with status report.
+
+j.doe@example.com

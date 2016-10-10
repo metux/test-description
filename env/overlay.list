@@ -1,0 +1,7 @@
+# List of kernel configuration overlays, that should be used
+#
+# Every defined kernel configuration in env/compile.list is built
+# without overlay and all here defined overlays. The overlays need to
+# be stored in compile/overlay/ .
+
+RT-full

@@ -1,0 +1,18 @@
+# List of kernel configurations that shoudl be built
+#
+# It is possible to list user defined kernel configurations as well as
+# predefined kernel defconfigs. The naming convention is as followed:
+#
+# 	     ARCH/CONFIG_NAME
+#
+# If there exists a file "CONFIG_NAME" in compile/config/ARCH/ , this
+# configuration is used. If not, the Linux kernel source code is
+# scaned for the configuration in arch/ARCH/configs/
+
+# ARCH=arm
+arm/phyflex-imx6
+
+# ARCH=x86
+x86/x86_64_defconfig
+x86/x86_64def_e1000e
+
