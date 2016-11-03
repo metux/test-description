@@ -2,9 +2,9 @@
 #
 # @CONFIG:	Kernel built with configuration ...
 # @OVERLAY:	... with overlay, if defined
-# @TARGET:	target defined as node in jenkins
-# @CYCLITEST:	cyclictest list, if a cyclictest should be exectued after
-# 		successfull boot
+# @TARGET:	target defined as node in Jenkins
+# @CYCLICTEST:	cyclictest list, if a cyclictest should be executed after
+# 		successful boot
 
 CONFIG=x86/x86_64def_e1000e
 OVERLAY=RT-full

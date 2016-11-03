@@ -12,7 +12,7 @@
 # @LOADGEN:	command, that should be executed as load. If LOADGEN is not set,
 # 		cyclictest runs without load. In database "idle" is stored as
 #		load.
-# 
+#
 
 DURATION=60
 INTERVAL=500
