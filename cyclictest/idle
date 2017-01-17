@@ -1,5 +1,8 @@
 # Environment for cyclictest
 #
+# The file name of the cyclictest is stored in the data base with test results
+# as the description of cyclictest.
+#
 # The following environment variables must be set:
 # @DURATION:	duration of cyclictest run in seconds (unit cannot be changed)
 #  		(-D option of cyclictest)
@@ -10,8 +13,7 @@
 #
 # This environment variable can stay empty
 # @LOADGEN:	command, that should be executed as load. If LOADGEN is not set,
-# 		cyclictest runs without load. In database "idle" is stored as
-#		load.
+# 		cyclictest runs without load.
 #
 
 DURATION=60
