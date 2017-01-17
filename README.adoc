@@ -50,3 +50,8 @@ The structure of the files is explained more detailed in the files
 itself. The kernel configuration files and the overlay files abide by
 the rules of Linux kernel configuration files. No further explanation
 is given.
+
+General hint: The value of an environment parameter set by the test description
+files must not be escaped! The general rule for the environment variable is:
+
+ENV_NAME = CONTENT_UP_TO_END_OF_LINE
