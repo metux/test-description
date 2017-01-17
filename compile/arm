@@ -10,10 +10,11 @@
 # Optional environment variables:
 # @MKDTBS: 	        If this variable is set to true the device tree binaries
 #  			defined in the kernel configuration are	built
-# @ADD_MAKE_OPTIONS:	If this option is set, the defined option in
-# 			compile.properties is overwritten!
-# @			In this file, environment variables make uses can be
-# 			defined as well.
+#
+# see compile/compile.properties : all those configuration parameters can be
+# set in the ARCH specific configuration file. The general settings are then
+# overwritten by the ARCH specific settings.
+#
 
 CROSS_COMPILE=arm-linux-gnueabi-
 MKDTBS=true
