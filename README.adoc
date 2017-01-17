@@ -25,16 +25,19 @@ given example executes the following tests:
 	compile.list	  (list of all compile tests, that should be executed)
 	overlay.list	  (list of overlays, that should be used for compile
 			   tests)
-	arm.properties	  ((cross) compile settings for architecture, if needed)
 	boottest.list	  (list of all boottests)
 	email.list	  (list of notification email addresses)
 
-+-compile		  (configurations and overlays for compile test)
++-compile		  (configurations and overlays for compile test as well as
+			   compile properties files)
 	+-configs	  (user defined kernel configurations, in subdirectories
 			   sorted by architecture)
 		+-arm	  (all arm configurations)
 		+-x86	  (all x86 configurations)
-	+-overlays	  (folder with all defined overlays)
+	+-overlays	  (folder with all defined overlays; overlays define
+			   additional kernel configs)
+	compile.properties(general compile properties)
+	arm		  (architecture dependent (cross) compile properties)
 
 +-boot			  (boottest settings, each boottest has an own file)
 

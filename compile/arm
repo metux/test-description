@@ -1,0 +1,20 @@
+# Kernel compile environment settings for ARCH, platform dependent
+#
+# The naming convention for the file name is
+#     compile/ARCH
+#
+# Mandatory environment variables for cross builds:
+# @CROSS_COMPILE:	Needs to be defined (not for x86, because build server
+#  			is x86 based)
+#
+# Optional environment variables:
+# @MKDTBS: 	        If this variable is set to true the device tree binaries
+#  			defined in the kernel configuration are	built
+# @ADD_MAKE_OPTIONS:	If this option is set, the defined option in
+# 			compile.properties is overwritten!
+# @			In this file, environment variables make uses can be
+# 			defined as well.
+
+CROSS_COMPILE=arm-linux-gnueabi-
+MKDTBS=true
+ADD_MAKE_OPTIONS=v=1
