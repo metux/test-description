@@ -21,7 +21,7 @@ given example executes the following tests:
 
 ----
 +-env			  (environment settings)
-	global.properties (definition of global environment settings)
+	global		  (definition of global environment settings)
 	compile.list	  (list of all compile tests, that should be executed)
 	overlay.list	  (list of overlays, that should be used for compile
 			   tests)
@@ -36,8 +36,9 @@ given example executes the following tests:
 		+-x86	  (all x86 configurations)
 	+-overlays	  (folder with all defined overlays; overlays define
 			   additional kernel configs)
-	compile.properties(general compile properties)
-	arm		  (architecture dependent (cross) compile properties)
+	+-env
+		arm	  (architecture dependent (cross) compile properties)
+		compile	  (general compile properties)
 
 +-boot			  (boottest settings, each boottest has an own file)
 
