@@ -45,12 +45,15 @@ given example executes the following tests:
 +-cyclictest		  (cyclictest settings)
 	iommu.list	  (list with all cyclictests for a target such as iommu)
 	idle		  (environment setting for a specific cyclictest)
+
++-patches		  (folder for quilt patche queue for kernel source(dtb
+			   and specific drivers only))
 ----
 
 The structure of the files is explained more detailed in the files
 itself. The kernel configuration files and the overlay files abide by
 the rules of Linux kernel configuration files. No further explanation
-is given.
+is given. There is no exemplary patches directory.
 
 General hint: The value of an environment parameter set by the test description
 files must not be escaped! The general rule for the environment variable is:
