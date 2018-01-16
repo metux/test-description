@@ -1,6 +1,30 @@
 CI-RT Test-description
 ======================
 
+
+Setup in Jenkins
+----------------
+
+To ensure, that the test-description triggers the proper test (per
+default cirt-scheduler) and the test states of a single
+test-description are comparable and not mixed with previous builds, a
+minimal Jenkinsfile triggering cirt-scheduler Job is added to the
+test-description.
+
+The test-description git repository needs to be the SCM for a "Jenkins
+Pipeline Multibranch" job. To generate the job, the following steps
+are required:
+
+  * Create a new pipeline multibranch job
+  * Configure job to use "Pipeline script from SCM"
+  * Configure SCM to use git.
+  * Add git URL
+  * Save configuration
+
+
+Structure of test-description
+-----------------------------
+
 The used git repository structure to define a CI-RT test run is
 explained in the following.
 
@@ -20,6 +44,9 @@ given example executes the following tests:
 (directories are marked with +-).
 
 ----
+Jenkinsfile		  (minimal Jenkinsfile with default parameters of
+			   cirt-scheduler as example and only triggering
+			   cirt-scheduler)
 +-env			  (environment settings)
 	global		  (definition of global environment settings)
 	compile.list	  (list of all compile tests, that should be executed)
