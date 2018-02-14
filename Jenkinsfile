@@ -3,22 +3,13 @@
  * CI-RT default Jenkinsfile
  */
 
-pipeline {
-	agent any;
+@Library('CI-RT@master') _
 
-	options {
-		timestamps()
-	}
-
-	stages {
-		stage('trigger ci-rt scheduler') {
-			steps {
-				build job: 'cirt-scheduler', parameters: [
-				      string(name: 'TESTDESCRIPTION_REPO', value: 'https://github.com/ci-rt/test-description.git'),
-				      string(name: 'GUI_TESTDESCR_BRANCH', value: 'master'),
-				      string(name: 'GUI_DB_HOSTNAME', value: 'localhost:5432'),
-				      string(name: 'GUI_CIRT_LIB_VERSION', value: 'master')]
-			}
-		}
-	}
+CIRTscheduler {
+	/*
+	 * Parameters of cirt scheduler could be defined here, see
+	 * cirt scheduler in cirt library for default values.
+	 */
+	//GUI_DB_HOSTNAME = 'db.example.com:5432';
+	//GUI_FAILURE_NOTIFICATION = 'cirt-it@example.com';
 }
