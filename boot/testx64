@@ -1,0 +1,4 @@
+CONFIG=x86/qemu_x86_64
+OVERLAY=RT-full
+TARGET=testx64
+CYCLICTEST=cyclictest/testx64.list

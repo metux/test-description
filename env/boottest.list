@@ -2,6 +2,5 @@
 #
 # The list refers to existing boottest description files in boot/
 
-boot/phyflex-imx6
-boot/iommu
-
+# boot only a single system
+boot/testx64

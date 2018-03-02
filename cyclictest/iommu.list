@@ -1,5 +1,0 @@
-# Cyclictest list
-#
-# Lists all cyclictests, that should be executed sequentially.
-
-cyclictest/idle

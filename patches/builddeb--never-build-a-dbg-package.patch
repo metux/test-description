@@ -1,0 +1,79 @@
+Subject: builddeb: never build a dbg package
+From: Anna-Maria Gleixner <anna-maria@linutronix.de>
+Date: Mon, 23 Jan 2017 14:51:53 +0100
+
+Do not build a dbg package, even if CONFIG_DEBUG_INFO is set.
+
+Signed-off-by: Anna-Maria Gleixner <anna-maria@linutronix.de>
+---
+ scripts/package/builddeb |   45 ---------------------------------------------
+ 1 file changed, 45 deletions(-)
+
+--- a/scripts/package/builddeb
++++ b/scripts/package/builddeb
+@@ -121,8 +121,6 @@ parisc|mips|powerpc)
+ 	installed_image_path="boot/vmlinuz-$version"
+ esac
+ 
+-BUILD_DEBUG="$(grep -s '^CONFIG_DEBUG_INFO=y' $KCONFIG_CONFIG || true)"
+-
+ # Setup the directory structure
+ rm -rf "$tmpdir" "$fwdir" "$kernel_headers_dir" "$libc_headers_dir" "$dbg_dir" $objtree/debian/files
+ mkdir -m 755 -p "$tmpdir/DEBIAN"
+@@ -163,24 +161,6 @@ if grep -q '^CONFIG_MODULES=y' $KCONFIG_
+ 		mv "$tmpdir/lib/modules/$version"/* "$tmpdir/usr/lib/uml/modules/$version/"
+ 		rmdir "$tmpdir/lib/modules/$version"
+ 	fi
+-	if [ -n "$BUILD_DEBUG" ] ; then
+-		for module in $(find $tmpdir/lib/modules/ -name *.ko -printf '%P\n'); do
+-			module=lib/modules/$module
+-			mkdir -p $(dirname $dbg_dir/usr/lib/debug/$module)
+-			# only keep debug symbols in the debug file
+-			$OBJCOPY --only-keep-debug $tmpdir/$module $dbg_dir/usr/lib/debug/$module
+-			# strip original module from debug symbols
+-			$OBJCOPY --strip-debug $tmpdir/$module
+-			# then add a link to those
+-			$OBJCOPY --add-gnu-debuglink=$dbg_dir/usr/lib/debug/$module $tmpdir/$module
+-		done
+-
+-		# resign stripped modules
+-		MODULE_SIG_ALL="$(grep -s '^CONFIG_MODULE_SIG_ALL=y' $KCONFIG_CONFIG || true)"
+-		if [ -n "$MODULE_SIG_ALL" ]; then
+-			INSTALL_MOD_PATH="$tmpdir" $MAKE KBUILD_SRC= modules_sign
+-		fi
+-	fi
+ fi
+ 
+ if [ "$ARCH" != "um" ]; then
+@@ -379,31 +359,6 @@ fi
+ 
+ create_package "$packagename" "$tmpdir"
+ 
+-if [ -n "$BUILD_DEBUG" ] ; then
+-	# Build debug package
+-	# Different tools want the image in different locations
+-	# perf
+-	mkdir -p $dbg_dir/usr/lib/debug/lib/modules/$version/
+-	cp vmlinux $dbg_dir/usr/lib/debug/lib/modules/$version/
+-	# systemtap
+-	mkdir -p $dbg_dir/usr/lib/debug/boot/
+-	ln -s ../lib/modules/$version/vmlinux $dbg_dir/usr/lib/debug/boot/vmlinux-$version
+-	# kdump-tools
+-	ln -s lib/modules/$version/vmlinux $dbg_dir/usr/lib/debug/vmlinux-$version
+-
+-	cat <<EOF >> debian/control
+-
+-Package: $dbg_packagename
+-Section: debug
+-Provides: linux-debug, linux-debug-$version
+-Architecture: any
+-Description: Linux kernel debugging symbols for $version
+- This package will come in handy if you need to debug the kernel. It provides
+- all the necessary debug symbols for the kernel and its modules.
+-EOF
+-
+-	create_package "$dbg_packagename" "$dbg_dir"
+-fi
+ 
+ if [ "x$1" = "xdeb-pkg" ]
+ then

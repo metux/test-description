@@ -16,8 +16,8 @@
 #		run.
 #
 
-GITREPO = git://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-rt-devel.git
-HTTPREPO = https://git.kernel.org/cgit/linux/kernel/git/rt/linux-rt-devel.git
+GITREPO = git://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-stable-rt.git
+HTTPREPO = http://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git
 PUBLICREPO = true
-BRANCH = origin/linux-4.6.y-rt
-ENTRYOWNER = db_user
+BRANCH = origin/v4.4-rt
+ENTRYOWNER = consumer

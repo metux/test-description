@@ -9,10 +9,5 @@
 # configuration is used. If not, the Linux kernel source code is
 # scanned for the configuration in arch/ARCH/configs/
 
-# ARCH=arm
-arm/phyflex-imx6
-
 # ARCH=x86
-x86/x86_64_defconfig
-x86/x86_64def_e1000e
-
+x86/qemu_x86_64

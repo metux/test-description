@@ -1,0 +1,6 @@
+BOOTTEST=boot/testx64
+DURATION=60
+INTERVAL=1000
+LIMIT=50000
+CYCLICTEST_OPTS= 
+LOADGEN=while true; do hackbench 100; done
