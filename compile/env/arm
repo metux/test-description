@@ -18,4 +18,5 @@
 
 CROSS_COMPILE=arm-linux-gnueabi-
 MKDTBS=true
-ADD_MAKE_OPTIONS=v=1
+ADD_MAKE_OPTIONS=v=1,KCFLAGS=-fno-pie
+KCFLAGS=-fno-pie
